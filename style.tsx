@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   touchable_container:{
     paddingVertical:15,
-    backgroundColor:"lightslategrey",
+    backgroundColor:"lightblue",
     paddingHorizontal:10,
     borderRadius:12,
     justifyContent:"center",
@@ -61,17 +61,22 @@ const styles = StyleSheet.create({
     margin:5,
     borderRadius:10,
     borderWidth:1,
-    backgroundColor:"cadetblue"
+    backgroundColor:"lightblue"
   },
   flatlistinnerText_container:{
-    paddingLeft:10,
-    fontSize:20,
-    color:"cornsilk"
+    fontSize:15,
+    color:"black",
+    textAlign:"center"
   },
   viewToucIndex_container:{
     backgroundColor:"gray",
     margin:10,
     borderRadius:15
+  },
+  flatlistinnerTextd_container:{
+    paddingLeft:10,
+    fontSize:15,
+    color:"black"
   }
 })
 

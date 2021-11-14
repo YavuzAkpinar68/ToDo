@@ -3,17 +3,24 @@ import React, { useEffect, useState } from 'react';
 import { Button, FlatList, Keyboard, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import styles from './style';
 
-
+interface ToDo {
+  title: string
+  description: string
+}
 
 export default function App() {
   
-  const [todo, setToDo] = useState<string>("")
-  const [todos, setToDos] = useState<string[]>([])
+  const [title, setTitle] = useState<string>('')
+  const [description, setDescription] = useState<string>('')
+  const [todos, setToDos] = useState<ToDo[]>([])
+
   const addToDo = () => {
-    setToDos([todo, ...todos])
-    setToDo("")
+    setToDos([{title:title, description:description}, ...todos])
+    setDescription("")
+    setTitle("")
     Keyboard.dismiss()
   }
+
   
 
   const removeToDo = (index: number) => {
@@ -36,25 +43,35 @@ export default function App() {
               onPress={() => removeToDo(index)}
               style={styles.flatlistinner_container}>
               <Text 
-                style={styles.flatlistinnerText_container}>{item}
+                style={styles.flatlistinnerText_container}>{item.title}
               </Text>
+              <Text
+                style={styles.flatlistinnerTextd_container}>Description:{item.description}</Text>
             </TouchableOpacity>}>
          </FlatList>
       </View>
       <View style={styles.viewToucIndex_container} >
         <View style={styles.textInput_container}> 
           <TextInput
-            placeholder="Yapılacaklar..."
-            value={todo}
+            placeholder="Title..."
+            value={title}
             onSubmitEditing={addToDo}
-            onChangeText={setToDo}>
+            onChangeText={setTitle}>
           </TextInput>
-        </View>   
+        </View>
+        <View style={styles.textInput_container}> 
+          <TextInput
+            placeholder="Description..."
+            value={description}
+            onSubmitEditing={addToDo}
+            onChangeText={setDescription}>
+          </TextInput>
+        </View>      
        
         <TouchableOpacity
           style={styles.touchable_container}
           onPress={addToDo}>
-            <Text style={{color:"silver"}}>Ekle...</Text>
+            <Text style={{color:"black"}}>Ekle...</Text>
         </TouchableOpacity>
       </View>
     </View>
